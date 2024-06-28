@@ -70,7 +70,7 @@ $(".slider").slick({
 });
 ```
 
-### Settings
+### Настройки
 
 Вариант | Тип | По умолчанию | Описание
 ------ | ---- | ------- | -----------
@@ -182,23 +182,23 @@ $('.your-element').slick('setPosition');
 
 Метод | Аргумент | Описание
 ------ | -------- | -----------
-`slick` | options : object | Initializes Slick
-`unslick` |  | Destroys Slick
-`slickNext` |  |  Triggers next slide
-`slickPrev` | | Triggers previous slide
-`slickPause` | | Pause Autoplay
-`slickPlay` | | Start Autoplay (_will also set `autoplay` option to `true`_)
-`slickGoTo` | index : int, dontAnimate : bool | Goes to slide by index, skipping animation if second parameter is set to true
-`slickCurrentSlide` |  |  Returns the current slide index
-`slickAdd` | element : html or DOM object, index: int, addBefore: bool | Add a slide. If an index is provided, will add at that index, or before if addBefore is set. If no index is provided, add to the end or to the beginning if addBefore is set. Accepts HTML String || Object
-`slickRemove` | index: int, removeBefore: bool | Remove slide by index. If removeBefore is set true, remove slide preceding index, or the first slide if no index is specified. If removeBefore is set to false, remove the slide following index, or the last slide if no index is set.
-`slickFilter` | filter : selector or function | Filters slides using jQuery .filter syntax
-`slickUnfilter` | | Removes applied filter
-`slickGetOption` | option : string(option name) | Gets an option value.
-`slickSetOption` | change an option, `refresh` is always `boolean` and will update UI changes...
- | `option, value, refresh` | change a [single `option`](https://github.com/kenwheeler/slick#settings) to given `value`; `refresh` is optional.
- | `"responsive", [{ breakpoint: n, settings: {} }, ... ], refresh` | change or add [whole sets of responsive options](#responsive-option-example)
- | `{ option: value, option: value, ... }, refresh` | change  [multiple `option`s](https://github.com/kenwheeler/slick#settings) to corresponding `value`s.
+`slick` | options : object | Инициализирует Слика
+`unslick` |  | Уничтожает ловушку
+`slickNext` |  | Запускает следующий слайд
+`slickPrev` | | Запускает предыдущий слайд
+`slickPause` | | Пауза в автозапуске
+`slickPlay` | | Запустить автозапуск (_также установит для параметра `autoplay` значение `true`_)
+`slickGoTo` | index : int, dontAnimate : bool | Переходит к слайду по индексу, пропуская анимацию, если для второго параметра установлено значение true.
+`slickCurrentSlide` |  |  Возвращает текущий индекс слайда
+`slickAdd` | element : html or DOM object, index: int, addBefore: bool | Добавьте слайд. Если указан индекс, будет добавлено по этому индексу или раньше, если установлен addBefore. Если индекс не указан, добавьте его в конец или в начало, если установлен addBefore. Принимает строку HTML || Объект
+`slickRemove` | index: int, removeBefore: bool | Удалить слайд по индексу. Если для параметра RemoveBefore установлено значение true, удалите предшествующий индекс слайда или первый слайд, если индекс не указан. Если для параметра RemoveBefore установлено значение false, удалите слайд, следующий за индексом, или последний слайд, если индекс не установлен.
+`slickFilter` | filter : selector or function | Фильтрует слайды, используя синтаксис jQuery .filter.
+`slickUnfilter` | | Удаляет примененный фильтр
+`slickGetOption` | option : string(option name) | Получает значение опции.
+`slickSetOption` | измените параметр, `refresh` всегда имеет логическое значение и обновит изменения пользовательского интерфейса...
+ | `option, value, refresh` | изменить [`option`](#Настройки) на заданное значение `value`; `refresh` обновление не является обязательным.
+ | `"responsive", [{ breakpoint: n, settings: {} }, ... ], refresh` | измените [несколько опций](#Пример-адаптивного-варианта)
+ | `{ option: value, option: value, ... }, refresh` | измените [несколько опций](#Настройки) соответствующими значениями `value`.
 
 
 #### Примеры
