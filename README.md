@@ -1,7 +1,7 @@
 #  Slisk Slider - шпаргалка
 
-[Официальный сайт](https://kenwheeler.github.io/slick/)
-[GitHub](https://github.com/kenwheeler/slick/)
+- [Официальный сайт](https://kenwheeler.github.io/slick/)
+- [GitHub](https://github.com/kenwheeler/slick/)
 
 ## УСТАНОВКА
 
@@ -11,10 +11,13 @@
 >npm install slick-carousel
 
 ### CSS
-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+```html
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+```
 ### JS
-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
+```html
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+```
 ### HTML
 
 - Начиная с версии 1.5 можно добавлять настройки, используя атрибут data-slick. 
