@@ -72,7 +72,7 @@ $(".slider").slick({
 
 ### Settings
 
-Option | Type | Default | Description
+Вариант | Тип | По умолчанию | Описание
 ------ | ---- | ------- | -----------
 accessibility | boolean | true | Включает навигацию с помощью табуляции и клавиш со стрелками. Если `autoplay: true`, фокус браузера устанавливается на текущий слайд (или первый из текущего набора слайдов, если несколько `slidesToShow`) после смены слайдов. Для полного соответствия требованиям в дополнение к этому включите focusOnChange.
 adaptiveHeight | boolean | false | Адаптирует высоту слайдера к текущему слайду
@@ -124,3 +124,125 @@ verticalSwiping | boolean | false | Меняет направление свай
 waitForAnimate | boolean | true | Игнорирует запросы на продвижение слайда во время анимации.
 zIndex | number | 1000 | Установите значения zIndex для слайдов, что полезно для IE9 и более ранних версий.
 
+### События ( Events )
+
+В версии 1.4 методы обратного вызова устарели и были заменены событиями. Используйте их перед инициализацией слика, как показано ниже:
+
+```javascript
+// При событии смахивания
+$('.your-element').on('swipe', function(event, slick, direction){
+  console.log(direction);
+  // left
+});
+
+// На грани удара
+$('.your-element').on('edge', function(event, slick, direction){
+  console.log('edge was hit')
+});
+
+// Включается перед сменой слайдов
+$('.your-element').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+  console.log(nextSlide);
+});
+```
+
+Событие | Параметры | Описание
+------ | -------- | -----------
+afterChange | event, slick, currentSlide | Обратный вызов после смены слайда
+beforeChange | event, slick, currentSlide, nextSlide | Обратный вызов перед сменой слайда
+breakpoint | event, slick, breakpoint | Срабатывает после достижения точки останова
+destroy | event, slick | Когда слайдер разрушен или снят с места.
+edge | event, slick, direction | Срабатывает, когда край прокручивается в небесконечном режиме.
+init | event, slick | Когда Slick впервые инициализирует обратный вызов. Обратите внимание, что это событие должно быть определено до инициализации ползунка.
+reInit | event, slick | Каждый раз, когда Slick (повторно) инициализирует обратный вызов
+setPosition | event, slick | Каждый раз, когда Slick пересчитывает позицию
+swipe | event, slick, direction | Срабатывает после смахивания/перетаскивания
+lazyLoaded | event, slick, image, imageSource | Срабатывает после ленивой загрузки изображения
+lazyLoadError | event, slick, image, imageSource | Срабатывает после того, как изображение не загружается
+
+#### Методы ( Methods )
+
+Методы вызываются в экземплярах slick через сам метод slick в версии 1.4, см. ниже:
+
+```javascript
+// Добавить слайд
+$('.your-element').slick('slickAdd',"<div></div>");
+
+// Получить текущий слайд
+var currentSlide = $('.your-element').slick('slickCurrentSlide');
+```
+
+Этот новый синтаксис позволяет вам также вызывать любой внутренний метод:
+
+```javascript
+// Обновить положение слайдера вручную
+$('.your-element').slick('setPosition');
+```
+
+
+Метод | Аргумент | Описание
+------ | -------- | -----------
+`slick` | options : object | Initializes Slick
+`unslick` |  | Destroys Slick
+`slickNext` |  |  Triggers next slide
+`slickPrev` | | Triggers previous slide
+`slickPause` | | Pause Autoplay
+`slickPlay` | | Start Autoplay (_will also set `autoplay` option to `true`_)
+`slickGoTo` | index : int, dontAnimate : bool | Goes to slide by index, skipping animation if second parameter is set to true
+`slickCurrentSlide` |  |  Returns the current slide index
+`slickAdd` | element : html or DOM object, index: int, addBefore: bool | Add a slide. If an index is provided, will add at that index, or before if addBefore is set. If no index is provided, add to the end or to the beginning if addBefore is set. Accepts HTML String || Object
+`slickRemove` | index: int, removeBefore: bool | Remove slide by index. If removeBefore is set true, remove slide preceding index, or the first slide if no index is specified. If removeBefore is set to false, remove the slide following index, or the last slide if no index is set.
+`slickFilter` | filter : selector or function | Filters slides using jQuery .filter syntax
+`slickUnfilter` | | Removes applied filter
+`slickGetOption` | option : string(option name) | Gets an option value.
+`slickSetOption` | change an option, `refresh` is always `boolean` and will update UI changes...
+ | `option, value, refresh` | change a [single `option`](https://github.com/kenwheeler/slick#settings) to given `value`; `refresh` is optional.
+ | `"responsive", [{ breakpoint: n, settings: {} }, ... ], refresh` | change or add [whole sets of responsive options](#responsive-option-example)
+ | `{ option: value, option: value, ... }, refresh` | change  [multiple `option`s](https://github.com/kenwheeler/slick#settings) to corresponding `value`s.
+
+
+#### Примеры
+
+Инициализируйте с помощью:
+
+```javascript
+$(element).slick({
+  dots: true,
+  speed: 500
+});
+ ```
+
+Измените скорость с помощью:
+
+```javascript
+$(element).slick('slickSetOption', 'speed', 5000, true);
+```
+
+Уничтожить с помощью:
+
+```javascript
+$(element).slick('unslick');
+```
+
+#### Переменные Sass
+
+Variable | Type | Default | Description
+------ | ---- | ------- | -----------
+$slick-font-path | string | "./fonts/" | Путь к каталогу для иконочного шрифта
+$slick-font-family | string | "slick" | Семейство шрифтов для иконочного шрифта
+$slick-loader-path | string | "./" | Путь к каталогу для образа загрузчика
+$slick-arrow-color | color | white | Цвет значков стрелок влево/вправо
+$slick-dot-color | color | black | Цвет навигационных точек
+$slick-dot-color-active | color | $slick-dot-color | Цвет активной навигационной точки
+$slick-prev-character | string | '\2190' | Код символа Юникода для значка предыдущей стрелки
+$slick-next-character | string | '\2192' | Код символа Юникода для значка следующей стрелки
+$slick-dot-character | string | '\2022' | Код символов Юникода для значка навигационной точки
+$slick-dot-size | pixels | 6px | Размер навигационных точек
+
+#### Поддержка в браузерах
+
+Slick работает в IE8+, а также в других современных браузерах, таких как Chrome, Firefox и Safari.
+
+#### Зависимости
+
+jQuery 1.7
