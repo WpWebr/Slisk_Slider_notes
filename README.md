@@ -197,8 +197,8 @@ $('.your-element').slick('setPosition');
 `slickGetOption` | option : string(option name) | Получает значение опции.
 `slickSetOption` | измените параметр, `refresh` всегда имеет логическое значение и обновит изменения пользовательского интерфейса...
  | `option, value, refresh` | изменить [`option`](#Настройки) на заданное значение `value`; `refresh` обновление не является обязательным.
- | `"responsive", [{ breakpoint: n, settings: {} }, ... ], refresh` | измените [несколько опций](#Пример-адаптивного-варианта)
- | `{ option: value, option: value, ... }, refresh` | измените [несколько опций](#Настройки) соответствующими значениями `value`.
+ | `"responsive", [{ breakpoint: n, settings: {} }, ... ], refresh` | изменить или добавить целые [наборы адаптивных опций](#Пример-адаптивного-варианта)
+ | `{ option: value, option: value, ... }, refresh` | измените [несколько опций `option`](#Настройки) соответствующими значениями `value`.
 
 
 #### Примеры
